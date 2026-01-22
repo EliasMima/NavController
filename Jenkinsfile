@@ -186,8 +186,9 @@ EOF
         }
 
         always {
-            // Clean workspace
-            cleanWs()
+                node{
+                cleanWs()
+                }
         }
     }
 
