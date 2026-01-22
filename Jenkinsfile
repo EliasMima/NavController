@@ -16,7 +16,7 @@ pipeline {
 //         KEY_ALIAS = credentials('android-key-alias-dev')
 //         KEY_PASSWORD = credentials('android-key-password-dev')
 //         FIREBASE_TOKEN = credentials('firebase-token-dev')
-        SONAR_TOKEN = credentials('sonarqube-token')
+        SONAR_TOKEN = sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26
 
         // Git information
         GIT_COMMIT_SHORT = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
