@@ -1,0 +1,134 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# fastlane/Fastfile
+# This is the configuration for automating Android builds and deployments
+
+default_platform(:android)
+
+platform :android do
+
+  # ===========================
+  # LANE: verify
+  # Purpose: Run tests and code quality checks
+  # ===========================
+  desc "Run unit tests, lint checks, and code quality analysis"
+  lane :verify do
+    # Clean previous builds
+    gradle(task: "clean")
+
+    # Run unit tests for Dev flavor
+    gradle(
+      task: "test",
+      flavor: "Dev",
+      build_type: "Debug"
+    )
+
+    # Run lint checks
+    gradle(
+      task: "lint",
+      flavor: "Dev",
+      build_type: "Debug"
+    )
+
+    # Optional: Run detekt for Kotlin static analysis
+    # gradle(task: "detekt")
+
+    UI.success(" All verification checks passed!")
+  end
+
+  # ===========================
+  # LANE: sonarqube
+  # Purpose: Run SonarQube code quality analysis
+  # ===========================
+  desc "Run SonarQube code quality scan"
+  lane :sonarqube do
+    gradle(
+      task: "sonarqube",
+      properties: {
+        "sonar.host.url" => ENV['SONAR_HOST_URL'],
+        "sonar.login" => ENV['SONAR_TOKEN'],
+        "sonar.projectKey" => ENV['SONAR_PROJECT_KEY']
+      }
+    )
+    UI.success(" SonarQube scan completed!")
+  end
+
+  # ===========================
+  # LANE: build_dev
+  # Purpose: Build Dev APK
+  # ===========================
+  desc "Build Dev APK"
+  lane :build_dev do
+    # Load environment variables for Dev
+    Dotenv.load('.env.dev')
+
+    gradle(
+      task: "assemble",
+      flavor: "Dev",
+      build_type: "Release",
+      properties: {
+        "android.injected.signing.store.file" => ENV['KEYSTORE_FILE'],
+        "android.injected.signing.store.password" => ENV['KEYSTORE_PASSWORD'],
+        "android.injected.signing.key.alias" => ENV['KEY_ALIAS'],
+        "android.injected.signing.key.password" => ENV['KEY_PASSWORD']
+      }
+    )
+
+    UI.success(" Dev APK built successfully!")
+  end
+
+  # ===========================
+  # LANE: deploy_dev
+  # Purpose: Deploy Dev build to Firebase App Distribution
+  # ===========================
+  desc "Deploy Dev build to Firebase App Distribution"
+  lane :deploy_dev do
+    # Load environment variables for Dev
+    Dotenv.load('.env.dev')
+
+    # Build the Dev APK
+    build_dev
+
+    # Upload to Firebase App Distribution
+    firebase_app_distribution(
+      app: ENV['FIREBASE_APP_ID'],
+      groups: "dev-testers",
+      release_notes: "Dev build from branch: #{ENV['GIT_BRANCH']} | Commit: #{ENV['GIT_COMMIT']}",
+      firebase_cli_token: ENV['FIREBASE_TOKEN'],
+      apk_path: lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+    )
+
+    UI.success(" Dev build deployed to Firebase App Distribution!")
+  end
+
+  # ===========================
+  # LANE: full_pipeline
+  # Purpose: Complete pipeline - verify, build, and deploy
+  # ===========================
+  desc "Run complete pipeline: verify → build → deploy"
+  lane :full_pipeline do
+    verify
+    deploy_dev
+  end
+
+  # ===========================
+  # ERROR HANDLING
+  # ===========================
+  error do |lane, exception|
+    UI.error(" Error in lane #{lane}: #{exception.message}")
+    # )
+  end
+end
