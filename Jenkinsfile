@@ -133,7 +133,7 @@ EOF
                 // Example: Run Snyk scan
                 sh '''
                     # Install Snyk CLI if not available
-                    npm install -g snyk
+                    sudo npm install -g snyk
 
                     # Authenticate and scan
                     snyk auth ${SNYK_TOKEN}
@@ -147,7 +147,7 @@ EOF
         // ==========================================
         stage('Build & Deploy') {
             steps {
-                echo '🚀 Building and deploying Dev build...'
+                echo 'Building and deploying Dev build...'
 
                 // Run Fastlane deploy lane
                 sh 'bundle exec fastlane deploy_dev'
