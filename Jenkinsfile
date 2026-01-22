@@ -185,10 +185,7 @@ EOF
             // )
         }
 
-        always {
-                node{
-                cleanWs()
-                }
+
         }
     }
 
