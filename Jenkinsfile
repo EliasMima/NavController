@@ -118,27 +118,27 @@ EOF
             }
         }
 
-        // ==========================================
-        // STAGE 4: Security Scan
-        // ==========================================
-        stage('Security Scan') {
-            when {
-                expression { return params.RUN_SECURITY_SCAN == true }
-            }
-            steps {
-                echo '🔒 Running security scan...'
-
-                // Example: Run Snyk scan
-                sh '''
-                    # Install Snyk CLI if not available
-                    sudo npm install -g snyk
-
-                    # Authenticate and scan
-                    snyk auth ${SNYK_TOKEN}
-                    snyk test --all-projects --severity-threshold=high
-                '''
-            }
-        }
+//         // ==========================================
+//         // STAGE 4: Security Scan
+//         // ==========================================
+//         stage('Security Scan') {
+//             when {
+//                 expression { return params.RUN_SECURITY_SCAN == true }
+//             }
+//             steps {
+//                 echo '🔒 Running security scan...'
+//
+//                 // Example: Run Snyk scan
+//                 sh '''
+//                     # Install Snyk CLI if not available
+//                     sudo npm install -g snyk
+//
+//                     # Authenticate and scan
+//                     snyk auth ${SNYK_TOKEN}
+//                     snyk test --all-projects --severity-threshold=high
+//                 '''
+//             }
+//         }
 
         // ==========================================
         // STAGE 5: Build & Deploy Dev
@@ -187,14 +187,14 @@ EOF
 
     }
 
-    // ==========================================
-    // PARAMETERS (Optional)
-    // ==========================================
-    parameters {
-        booleanParam(
-            name: 'RUN_SECURITY_SCAN',
-            defaultValue: false,
-            description: 'Run security scan with Snyk'
-        )
-    }
+//     // ==========================================
+//     // PARAMETERS (Optional)
+//     // ==========================================
+//     parameters {
+//         booleanParam(
+//             name: 'RUN_SECURITY_SCAN',
+//             defaultValue: false,
+//             description: 'Run security scan with Snyk'
+//         )
+//     }
 }
