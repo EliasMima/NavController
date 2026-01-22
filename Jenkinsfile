@@ -185,8 +185,9 @@ EOF
             // )
         }
 
-        options {
-            skipDefaultCheckout(true)
+//         always {
+//             // Clean workspace
+//             cleanWs()
         }
     }
 
