@@ -185,9 +185,9 @@ EOF
             // )
         }
 
-//         always {
-//             // Clean workspace
-//             cleanWs()
+        always {
+            // Clean workspace
+            cleanWs()
         }
     }
 
