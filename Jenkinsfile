@@ -92,18 +92,18 @@ EOF
                 // Run Fastlane verify lane
                 sh 'bundle exec fastlane verify'
             }
-            post {
-                always {
-                    // Publish test results
-                    junit '**/test-results/**/*.xml'
-
-                    // Publish lint results
-                    recordIssues(
-                        enabledForFailure: true,
-                        tool: androidLintParser(pattern: '**/lint-results-*.xml')
-                    )
-                }
-            }
+//             post {
+//                 always {
+//                     // Publish test results
+//                     junit '**/test-results/**/*.xml'
+//
+//                     // Publish lint results
+//                     recordIssues(
+//                         enabledForFailure: true,
+//                         tool: androidLintParser(pattern: '**/lint-results-*.xml')
+//                     )
+//                 }
+//             }
         }
 
         // ==========================================
