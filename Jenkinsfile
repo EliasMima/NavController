@@ -2,9 +2,7 @@
 // This pipeline runs verification, builds, and deploys the Dev flavor
 
 pipeline {
-    agent {
-        label 'android-agent'  // Use Jenkins node with Android SDK installed
-    }
+    agent any
 
     // Environment variables available to all stages
     environment {
