@@ -52,7 +52,7 @@ platform :android do
   desc "Run SonarQube code quality scan"
   lane :sonarqube do
     gradle(
-      task: "sonarqube",
+      task: "sonar",
       properties: {
         "sonar.host.url" => ENV['SONAR_HOST_URL'],
         "sonar.login" => ENV['SONAR_TOKEN'],
