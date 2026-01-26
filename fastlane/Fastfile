@@ -29,18 +29,14 @@ platform :android do
     # Clean previous builds
     gradle(task: "clean")
 
-#     # Run unit tests for Dev flavor
-#     gradle(
-#       task: "test",
-#       flavor: "Dev",
-#       build_type: "Debug"
-#     )
+     # Run unit tests for Dev flavor
+     gradle(
+     task: "testDebugUnitTest",
+    )
 
     # Run lint checks
     gradle(
-      task: "lint",
-      flavor: "Dev",
-      build_type: "Debug"
+      task: ":app:lintDebug",
     )
 
     # Optional: Run detekt for Kotlin static analysis
