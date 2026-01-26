@@ -8,7 +8,7 @@ pipeline {
     environment {
         // Android SDK paths
     JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
-    ANDROID_HOME = '/home/jenkins/Android/Sdk'
+   ANDROID_HOME = '/var/lib/jenkins/Android/Sdk'
     PATH = "${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${env.PATH}:${JAVA_HOME}/bin"
 
         // Load credentials from Jenkins
