@@ -10,14 +10,17 @@ pipeline {
     JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
    ANDROID_HOME = '/var/lib/jenkins/Android/Sdk'
     PATH = "${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${env.PATH}:${JAVA_HOME}/bin"
+
     SONAR_HOST_URL = 'http://localhost:9000'
+    SONAR_PROJECT_KEY='android-app'
+    SONAR_TOKEN = 'sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26'
         // Load credentials from Jenkins
 //         KEYSTORE_FILE = credentials('android-keystore-dev')
 //         KEYSTORE_PASSWORD = credentials('android-keystore-password-dev')
 //         KEY_ALIAS = credentials('android-key-alias-dev')
 //         KEY_PASSWORD = credentials('android-key-password-dev')
 //         FIREBASE_TOKEN = credentials('firebase-token-dev')
-        SONAR_TOKEN = 'sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26'
+
 
         // Git information
         GIT_COMMIT_SHORT = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
@@ -115,7 +118,7 @@ EOF
                 echo '📊 Running SonarQube analysis...'
 
                 // Run SonarQube scan
-                sh 'bundle exec fastlane sonarqube'
+                sh 'bundle exec fastlane android sonarqube'
             }
         }
 

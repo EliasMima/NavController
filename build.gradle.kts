@@ -7,7 +7,7 @@ plugins {
 
 sonarqube {
     properties {
-        property("sonar.projectKey", "android-pipeline")
+        property("sonar.projectKey", "android-app")
         property("sonar.projectName", "NavigationController")
         property("sonar.host.url", "http://localhost:9000")
         property("sonar.token", "sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26")
