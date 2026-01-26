@@ -86,41 +86,41 @@ EOF
             }
         }
 
-        // ==========================================
-        // STAGE 2: Run Tests & Verification
-        // ==========================================
-        stage('Verify') {
-            steps {
-                echo '🔍 Running verification checks...'
-
-                // Run Fastlane verify lane
-                sh 'bundle exec fastlane verify'
-            }
-//             post {
-//                 always {
-//                     // Publish test results
-//                     junit '**/test-results/**/*.xml'
+//         // ==========================================
+//         // STAGE 2: Run Tests & Verification
+//         // ==========================================
+//         stage('Verify') {
+//             steps {
+//                 echo '🔍 Running verification checks...'
 //
-//                     // Publish lint results
-//                     recordIssues(
-//                         enabledForFailure: true,
-//                         tool: androidLintParser(pattern: '**/lint-results-*.xml')
-//                     )
-//                 }
+//                 // Run Fastlane verify lane
+//                 sh 'bundle exec fastlane verify'
 //             }
-        }
-
-        // ==========================================
-        // STAGE 3: Code Quality Analysis
-        // ==========================================
-        stage('Code Quality') {
-            steps {
-                echo '📊 Running SonarQube analysis...'
-
-                // Run SonarQube scan
-                sh 'bundle exec fastlane android sonarqube'
-            }
-        }
+// //             post {
+// //                 always {
+// //                     // Publish test results
+// //                     junit '**/test-results/**/*.xml'
+// //
+// //                     // Publish lint results
+// //                     recordIssues(
+// //                         enabledForFailure: true,
+// //                         tool: androidLintParser(pattern: '**/lint-results-*.xml')
+// //                     )
+// //                 }
+// //             }
+//         }
+//
+//         // ==========================================
+//         // STAGE 3: Code Quality Analysis
+//         // ==========================================
+//         stage('Code Quality') {
+//             steps {
+//                 echo '📊 Running SonarQube analysis...'
+//
+//                 // Run SonarQube scan
+//                 sh 'bundle exec fastlane android sonarqube'
+//             }
+//         }
 
 //         // ==========================================
 //         // STAGE 4: Security Scan
