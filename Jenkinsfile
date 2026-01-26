@@ -8,7 +8,7 @@ pipeline {
     environment {
         // Android SDK paths
         ANDROID_HOME = '/opt/android-sdk'
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk'
+        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
 
         // Load credentials from Jenkins
 //         KEYSTORE_FILE = credentials('android-keystore-dev')

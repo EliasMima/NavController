@@ -5,22 +5,22 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000586181">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000504382">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: clean" time="2.353004522">
+      <testcase classname="fastlane.lanes" name="1: clean" time="16.20825229">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: testDebugUnitTest" time="15.689929585">
+      <testcase classname="fastlane.lanes" name="2: testDebugUnitTest" time="35.147902588">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: :app:lintDebug" time="115.175011993">
+      <testcase classname="fastlane.lanes" name="3: :app:lintDebug" time="35.331243615">
         
       </testcase>
     
