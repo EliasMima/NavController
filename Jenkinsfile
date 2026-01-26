@@ -82,16 +82,16 @@ EOF
             }
         }
 
-//         // ==========================================
-//         // STAGE 2: Run Tests & Verification
-//         // ==========================================
-//         stage('Verify') {
-//             steps {
-//                 echo '🔍 Running verification checks...'
-//
-//                 // Run Fastlane verify lane
-//                 sh 'bundle exec fastlane verify'
-//             }
+        // ==========================================
+        // STAGE 2: Run Tests & Verification
+        // ==========================================
+        stage('Verify') {
+            steps {
+                echo '🔍 Running verification checks...'
+
+                // Run Fastlane verify lane
+                sh 'bundle exec fastlane verify'
+            }
 //             post {
 //                 always {
 //                     // Publish test results
