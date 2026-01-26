@@ -39,13 +39,21 @@ Run SonarQube code quality scan
 
 Build Dev APK
 
-### android deploy_dev
+### android distribute_apk
 
 ```sh
-[bundle exec] fastlane android deploy_dev
+[bundle exec] fastlane android distribute_apk
 ```
 
-Deploy Dev build to Firebase App Distribution
+Build and distribute APK to Firebase
+
+### android distribute_with_notes
+
+```sh
+[bundle exec] fastlane android distribute_with_notes
+```
+
+Build and distribute with dynamic release notes
 
 ### android full_pipeline
 

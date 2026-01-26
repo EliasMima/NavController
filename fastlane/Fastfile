@@ -90,25 +90,39 @@ platform :android do
   # LANE: deploy_dev
   # Purpose: Deploy Dev build to Firebase App Distribution
   # ===========================
-  desc "Deploy Dev build to Firebase App Distribution"
-  lane :deploy_dev do
-    # Load environment variables for Dev
-    Dotenv.load('.env.dev')
+  desc "Build and distribute APK to Firebase"
+    lane :distribute_apk do
+      # Build your APK
+      gradle(
+        task: "assemble",
+        build_type: "Release"
+      )
 
-    # Build the Dev APK
-    build_dev
+      # Upload to Firebase App Distribution
+      firebase_app_distribution(
+        app: "1:732552016910:android:a19f926982c535a033785f",  # Firebase App ID
+        apk_path: "app/build/outputs/apk/release/app-release-unsigned.apk",
+        testers: "tester1@example.com, tester2@example.com",  # Comma-separated emails
+        release_notes: "New release with bug fixes and improvements",
+      )
+    end
 
-    # Upload to Firebase App Distribution
-    firebase_app_distribution(
-      app: ENV['FIREBASE_APP_ID'],
-      groups: "dev-testers",
-      release_notes: "Dev build from branch: #{ENV['GIT_BRANCH']} | Commit: #{ENV['GIT_COMMIT']}",
-      firebase_cli_token: ENV['FIREBASE_TOKEN'],
-      apk_path: lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
-    )
+    desc "Build and distribute with dynamic release notes"
+    lane :distribute_with_notes do |options|
+      gradle(
+        task: "assemble",
+        build_type: "Release"
+      )
 
-    UI.success(" Dev build deployed to Firebase App Distribution!")
-  end
+      firebase_app_distribution(
+        app: ENV["FIREBASE_APP_ID"],  # Use environment variable
+        apk_path: "app/build/outputs/apk/release/app-release.apk",
+        testers_file: "fastlane/testers.txt",  # File with emails, one per line
+        release_notes: options[:notes] || "Latest build",
+        firebase_cli_token: ENV["FIREBASE_TOKEN"]  # For CI/CD
+      )
+    end
+
 
   # ===========================
   # LANE: full_pipeline
