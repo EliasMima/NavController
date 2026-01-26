@@ -10,7 +10,7 @@ pipeline {
     JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
    ANDROID_HOME = '/var/lib/jenkins/Android/Sdk'
     PATH = "${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${env.PATH}:${JAVA_HOME}/bin"
-
+    SONAR_HOST_URL = 'http://localhost:9000'
         // Load credentials from Jenkins
 //         KEYSTORE_FILE = credentials('android-keystore-dev')
 //         KEYSTORE_PASSWORD = credentials('android-keystore-password-dev')
