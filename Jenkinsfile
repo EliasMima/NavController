@@ -7,7 +7,7 @@ pipeline {
     // Environment variables available to all stages
     environment {
         // Android SDK paths
-        ANDROID_HOME = '/opt/android-sdk'
+        ANDROID_HOME = '/home/elias/Android/Sdk'
         JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
 
         // Load credentials from Jenkins
