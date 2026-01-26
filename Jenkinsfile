@@ -8,7 +8,8 @@ pipeline {
     environment {
         // Android SDK paths
        ANDROID_HOME='/home/jenkins/Android/Sdk'
-       PATH='$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH'
+       PATH="${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${env.PATH}"
+
 
         JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
 
