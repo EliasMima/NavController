@@ -86,66 +86,46 @@ EOF
             }
         }
 
-//         // ==========================================
-//         // STAGE 2: Run Tests & Verification
-//         // ==========================================
-//         stage('Verify') {
-//             steps {
-//                 echo '🔍 Running verification checks...'
-//
-//                 // Run Fastlane verify lane
-//                 sh 'bundle exec fastlane verify'
-//             }
-// //             post {
-// //                 always {
-// //                     // Publish test results
-// //                     junit '**/test-results/**/*.xml'
-// //
-// //                     // Publish lint results
-// //                     recordIssues(
-// //                         enabledForFailure: true,
-// //                         tool: androidLintParser(pattern: '**/lint-results-*.xml')
-// //                     )
-// //                 }
-// //             }
-//         }
-//
-//         // ==========================================
-//         // STAGE 3: Code Quality Analysis
-//         // ==========================================
-//         stage('Code Quality') {
-//             steps {
-//                 echo '📊 Running SonarQube analysis...'
-//
-//                 // Run SonarQube scan
-//                 sh 'bundle exec fastlane android sonarqube'
-//             }
-//         }
+        // ==========================================
+        // STAGE 2: Run Tests & Verification
+        // ==========================================
+        stage('Verify') {
+            steps {
+                echo '🔍 Running verification checks...'
 
-//         // ==========================================
-//         // STAGE 4: Security Scan
-//         // ==========================================
-//         stage('Security Scan') {
-//             when {
-//                 expression { return params.RUN_SECURITY_SCAN == true }
-//             }
-//             steps {
-//                 echo '🔒 Running security scan...'
+                // Run Fastlane verify lane
+                sh 'bundle exec fastlane verify'
+            }
+//             post {
+//                 always {
+//                     // Publish test results
+//                     junit '**/test-results/**/*.xml'
 //
-//                 // Example: Run Snyk scan
-//                 sh '''
-//                     # Install Snyk CLI if not available
-//                     sudo npm install -g snyk
-//
-//                     # Authenticate and scan
-//                     snyk auth ${SNYK_TOKEN}
-//                     snyk test --all-projects --severity-threshold=high
-//                 '''
+//                     // Publish lint results
+//                     recordIssues(
+//                         enabledForFailure: true,
+//                         tool: androidLintParser(pattern: '**/lint-results-*.xml')
+//                     )
+//                 }
 //             }
-//         }
+        }
 
         // ==========================================
-        // STAGE 5: Build & Deploy Dev
+        // STAGE 3: Code Quality Analysis
+        // ==========================================
+        stage('Code Quality') {
+            steps {
+                echo '📊 Running SonarQube analysis...'
+
+                // Run SonarQube scan
+                sh 'bundle exec fastlane android sonarqube'
+            }
+        }
+
+
+
+        // ==========================================
+        // STAGE 4: Build & Deploy Dev
         // ==========================================
         stage('Build & Deploy') {
             steps {
@@ -191,14 +171,3 @@ EOF
 
     }
 
-//     // ==========================================
-//     // PARAMETERS (Optional)
-//     // ==========================================
-//     parameters {
-//         booleanParam(
-//             name: 'RUN_SECURITY_SCAN',
-//             defaultValue: false,
-//             description: 'Run security scan with Snyk'
-//         )
-//     }
-}
