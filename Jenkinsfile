@@ -152,22 +152,13 @@ EOF
             // Archive the APK
             archiveArtifacts artifacts: '**/outputs/apk/**/*.apk', fingerprint: true
 
-            // Optional: Send notification
-            // slackSend(
-            //     color: 'good',
-            //     message: "Build #${env.BUILD_NUMBER} succeeded for ${env.GIT_BRANCH}"
-            // )
+
         }
 
         failure {
             echo '❌ Pipeline failed!'
 
-            // Optional: Send notification
-            // slackSend(
-            //     color: 'danger',
-            //     message: "Build #${env.BUILD_NUMBER} failed for ${env.GIT_BRANCH}"
-            // )
-        }
+
 
     }
 
