@@ -157,9 +157,11 @@ EOF
 
         failure {
             echo '❌ Pipeline failed!'
+            }
+
+        }
 
 
 
-    }
 
-}
+
