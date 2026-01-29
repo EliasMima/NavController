@@ -13,7 +13,7 @@ pipeline {
 
     SONAR_HOST_URL = 'http://localhost:9000'
     SONAR_PROJECT_KEY='AndroidProj'
-    SONAR_TOKEN = 'sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26'
+    SONAR_TOKEN = 'sqa_df1f32e2f193c27d017f2619c6963011bb620025'
         // Load credentials from Jenkins
 //         KEYSTORE_FILE = credentials('android-keystore-dev')
 //         KEYSTORE_PASSWORD = credentials('android-keystore-password-dev')
