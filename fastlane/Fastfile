@@ -92,7 +92,7 @@ platform :android do
   # Purpose: Deploy Dev build to Firebase App Distribution
   # ===========================
   desc "Build and distribute APK to Firebase"
-    lane :distribute_apk do
+    lane :deploy_dev do
       # Build your APK
       gradle(
         task: "assemble",
