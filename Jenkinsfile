@@ -12,7 +12,7 @@ pipeline {
     PATH = "${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${env.PATH}:${JAVA_HOME}/bin"
 
     SONAR_HOST_URL = 'http://localhost:9000'
-    SONAR_PROJECT_KEY='android-app'
+    SONAR_PROJECT_KEY='AndroidProj'
     SONAR_TOKEN = 'sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26'
         // Load credentials from Jenkins
 //         KEYSTORE_FILE = credentials('android-keystore-dev')
@@ -77,7 +77,7 @@ KEY_PASSWORD=${KEY_PASSWORD}
 
 SONAR_HOST_URL=http://your-sonarqube-server:9000
 SONAR_TOKEN=${SONAR_TOKEN}
-SONAR_PROJECT_KEY=com.example.myapp.dev
+SONAR_PROJECT_KEY=AndroidProj
 
 GIT_BRANCH=${GIT_BRANCH}
 GIT_COMMIT=${GIT_COMMIT_SHORT}

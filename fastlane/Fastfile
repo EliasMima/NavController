@@ -54,9 +54,10 @@ platform :android do
     gradle(
       task: "sonar",
       properties: {
-        "sonar.host.url" => ENV['SONAR_HOST_URL'],
-        "sonar.token" => ENV['SONAR_TOKEN'],
-        "sonar.projectKey" => ENV['SONAR_PROJECT_KEY']
+    "sonar.host.url" => "http://localhost:9000",
+    "sonar.projectKey" => "AndroidProj",
+    "sonar.token" => "sqp_7cf1e042da8492d59d391f04ddaa72c0f7f4ba26"
+        "sonar.gradle.skipCompile" => "true"
       }
     )
     UI.success(" SonarQube scan completed!")
