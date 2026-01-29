@@ -56,7 +56,7 @@ platform :android do
       properties: {
     "sonar.host.url" => "http://localhost:9000",
     "sonar.projectKey" => "AndroidProj",
-    "sonar.token" => ENV["SONAR_TOKEN"]
+    "sonar.token" => ENV["SONAR_TOKEN"],
         "sonar.gradle.skipCompile" => "true"
       }
     )
