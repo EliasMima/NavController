@@ -55,7 +55,7 @@ platform :android do
       task: "sonar",
       properties: {
         "sonar.host.url" => ENV['SONAR_HOST_URL'],
-        "sonar.login" => ENV['SONAR_TOKEN'],
+        "sonar.token" => ENV['SONAR_TOKEN'],
         "sonar.projectKey" => ENV['SONAR_PROJECT_KEY']
       }
     )
