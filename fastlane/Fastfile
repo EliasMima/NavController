@@ -103,7 +103,7 @@ platform :android do
       firebase_app_distribution(
         app: "1:732552016910:android:a19f926982c535a033785f",  # Firebase App ID
         apk_path: "app/build/outputs/apk/release/app-release-unsigned.apk",
-        testers: "eliasmima7@icloud.com, gleegleech@gmail.com, yvonnebosire08@gmail.com" # Comma-separated emails
+        testers: "eliasmima7@icloud.com, gleegleech@gmail.com, yvonnebosire08@gmail.com", # Comma-separated emails
         release_notes: "New release with bug fixes and improvements",
       )
     end
