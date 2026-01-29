@@ -14,12 +14,15 @@ pipeline {
     SONAR_HOST_URL = 'http://localhost:9000'
     SONAR_PROJECT_KEY='AndroidProj'
     SONAR_TOKEN = 'sqa_df1f32e2f193c27d017f2619c6963011bb620025'
+
+           FIREBASE_TOKEN = credentials('firebase-cli-token')
+
         // Load credentials from Jenkins
 //         KEYSTORE_FILE = credentials('android-keystore-dev')
 //         KEYSTORE_PASSWORD = credentials('android-keystore-password-dev')
 //         KEY_ALIAS = credentials('android-key-alias-dev')
 //         KEY_PASSWORD = credentials('android-key-password-dev')
-//         FIREBASE_TOKEN = credentials('firebase-token-dev')
+//
 
 
         // Git information
